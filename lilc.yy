@@ -72,6 +72,8 @@
   LILC::ExpNode * term;
   LILC::IntLitToken * intLitTokenValue;
   LILC::StringLitToken * stringLitTokenValue;
+  std::list<ExpNode*>* expListNode;
+  LILC::CallExpNode * callExpNode;
 	/*LILC::Token * token;*/
 }
 
@@ -146,7 +148,8 @@
 %type <expNode> exp
 %type <loc> loc
 %type <term> term
-
+%type <expListNode> actualList
+%type <callExpNode> fncall
 
 /* NOTE: Make sure to add precedence and associativity
  * declarations
@@ -250,10 +253,28 @@ stmtList : stmtList stmt {
 stmt : assignExp SEMICOLON {
     $$ = new AssignStmtNode($1);
     }
+    | fncall SEMICOLON{
+      $$ = new CallStmtNode($1);
+    }
   ;
 assignExp : loc ASSIGN exp {
     $$ = new AssignNode($1, $3);
     }
+fncall : id LPAREN RPAREN {
+        $$ = new CallExpNode($1, new ExpListNode(new std::list<ExpNode*>()));
+        }
+      | id LPAREN actualList RPAREN{
+        $$ = new CallExpNode($1, new ExpListNode($3));
+        }
+actualList : exp{
+              $$ = new std::list<ExpNode*>();
+              $$->push_back($1);
+            }
+            |actualList COMMA exp{
+              $1->push_back($3);
+              $$ = $1;
+            }
+
 exp :  term {
     $$ = $1;
     }

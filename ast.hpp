@@ -143,8 +143,8 @@ public:
 
 class ExpListNode : public ASTNode {
 public:
-	ExpListNode(std::list<ExpNode *> expList) : ASTNode() {
-		myExpList = expList;
+	ExpListNode(std::list<ExpNode *> * expList) : ASTNode() {
+		myExpList = *expList;
 	}
 	void unparse(std::ostream& out, int indent);
 private:
@@ -376,6 +376,28 @@ public:
 	FalseNode() : ExpNode() {
 	}
 	void unparse(std::ostream& out, int indent);
+};
+
+class CallExpNode : public ExpNode{
+public:
+	CallExpNode(IdNode * id, ExpListNode * expListNode) : ExpNode(){
+		myExpList = expListNode;
+		myId = id;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpListNode * myExpList;
+	IdNode * myId;
+};
+
+class CallStmtNode : public StmtNode{
+public:
+	CallStmtNode(CallExpNode * callExpNode) : StmtNode(){
+		myCallExpNode = callExpNode;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	CallExpNode * myCallExpNode;
 };
 
 } //End namespace LIL' C
