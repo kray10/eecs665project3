@@ -133,4 +133,8 @@ void TrueNode::unparse(std::ostream& out, int indent) {
 	out << "true";
 }
 
+void FalseNode::unparse(std::ostream& out, int indent) {
+	out << "false";
+}
+
 } // End namespace LIL' C

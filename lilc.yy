@@ -269,6 +269,9 @@ term : loc {
   | TRUE {
     $$ = new TrueNode();
     }
+  | FALSE {
+    $$ = new FalseNode();
+    }
   ;
 type : INT { $$ = new IntNode();}
 type : BOOL { $$ = new BoolNode();}

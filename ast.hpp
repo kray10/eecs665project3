@@ -371,6 +371,13 @@ public:
 	void unparse(std::ostream& out, int indent);
 };
 
+class FalseNode : public ExpNode {
+public:
+	FalseNode() : ExpNode() {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
 } //End namespace LIL' C
 
 #endif
