@@ -137,4 +137,85 @@ void FalseNode::unparse(std::ostream& out, int indent) {
 	out << "false";
 }
 
+void PostIncStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	myExp->unparse(out, 0);
+	out << "++;\n";
+}
+
+void PostDecStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	myExp->unparse(out, 0);
+	out << "--;\n";
+}
+
+void ReadStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	out << "input >> ";
+	myExp->unparse(out, 0);
+	out << ";\n";
+}
+
+void WriteStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	out << "output >> ";
+	myExp->unparse(out, 0);
+	out << ";\n";
+}
+
+void IfStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	out << "if (";
+	myExp->unparse(out, 0);
+	out << ") {\n";
+	myDeclList->unparse(out, indent + 1);
+	myStmtList->unparse(out, indent + 1);
+	doIndent(out, indent);
+	out << "}\n";
+}
+
+void IfElseStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	out << "if (";
+	myExp->unparse(out, 0);
+	out << ") {\n";
+	myDeclList1->unparse(out, indent + 1);
+	myStmtList1->unparse(out, indent + 1);
+	doIndent(out, indent);
+	out << "} else {\n";
+	myDeclList2->unparse(out, indent + 1);
+	myStmtList2->unparse(out, indent + 1);
+	doIndent(out, indent);
+	out << "}\n";
+}
+
+void WhileStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	out << "while (";
+	myExp->unparse(out, 0);
+	out << ") {\n";
+	myDeclList->unparse(out, indent + 1);
+	myStmtList->unparse(out, indent + 1);
+	doIndent(out, indent);
+	out << "}\n";
+}
+
+void ReturnStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	out << "return";
+	if (myExp != nullptr) {
+		out << " ";
+		myExp->unparse(out, 0);
+	}
+	out << ";\n";
+}
+
+void PlusNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " + ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
 } // End namespace LIL' C

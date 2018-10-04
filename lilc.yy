@@ -250,11 +250,42 @@ stmtList : stmtList stmt {
 stmt : assignExp SEMICOLON {
     $$ = new AssignStmtNode($1);
     }
+  | loc PLUSPLUS SEMICOLON {
+    $$ = new PostIncStmtNode($1);
+    }
+  | loc MINUSMINUS SEMICOLON {
+    $$ = new PostDecStmtNode($1);
+    }
+  | INPUT READ loc SEMICOLON {
+    $$ = new ReadStmtNode($3);
+    }
+  | OUTPUT WRITE exp SEMICOLON {
+    $$ = new WriteStmtNode($3);
+    }
+  | IF LPAREN exp RPAREN LCURLY varDeclList stmtList RCURLY {
+    $$ = new IfStmtNode($3, new DeclListNode($6), new StmtListNode($7));
+    }
+  | IF LPAREN exp RPAREN LCURLY varDeclList stmtList RCURLY ELSE LCURLY varDeclList stmtList RCURLY {
+    $$ = new IfElseStmtNode($3, new DeclListNode($6), new StmtListNode($7),
+                            new DeclListNode($11), new StmtListNode($12));
+    }
+  | WHILE LPAREN exp RPAREN LCURLY varDeclList stmtList RCURLY {
+    $$ = new WhileStmtNode($3, new DeclListNode($6), new StmtListNode($7));
+    }
+  | RETURN exp SEMICOLON {
+    $$ = new ReturnStmtNode($2);
+    }
+  | RETURN SEMICOLON {
+    $$ = new ReturnStmtNode(nullptr);
+    }
   ;
 assignExp : loc ASSIGN exp {
     $$ = new AssignNode($1, $3);
     }
-exp :  term {
+exp : exp PLUS exp {
+    $$ = new PlusNode($1, $3);
+    }
+  | term {
     $$ = $1;
     }
 term : loc {

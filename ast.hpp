@@ -143,8 +143,8 @@ public:
 
 class ExpListNode : public ASTNode {
 public:
-	ExpListNode(std::list<ExpNode *> expList) : ASTNode() {
-		myExpList = expList;
+	ExpListNode(std::list<ExpNode *> * expList) : ASTNode() {
+		myExpList = *expList;
 	}
 	void unparse(std::ostream& out, int indent);
 private:
@@ -374,6 +374,125 @@ public:
 class FalseNode : public ExpNode {
 public:
 	FalseNode() : ExpNode() {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class PostIncStmtNode : public StmtNode {
+public:
+	PostIncStmtNode(ExpNode * expNode) : StmtNode() {
+		myExp = expNode;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpNode * myExp;
+};
+
+class PostDecStmtNode : public StmtNode {
+public:
+	PostDecStmtNode(ExpNode * expNode) : StmtNode() {
+		myExp = expNode;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpNode * myExp;
+};
+
+class ReadStmtNode : public StmtNode {
+public:
+	ReadStmtNode(ExpNode * expNode) : StmtNode() {
+		myExp = expNode;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpNode * myExp;
+};
+
+class WriteStmtNode : public StmtNode {
+public:
+	WriteStmtNode(ExpNode * expNode) : StmtNode() {
+		myExp = expNode;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpNode * myExp;
+};
+
+class IfStmtNode : public StmtNode {
+public:
+	IfStmtNode(ExpNode * expNode, DeclListNode* declList,
+		StmtListNode * stmtList) : StmtNode() {
+			myExp = expNode;
+			myDeclList = declList;
+			myStmtList = stmtList;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpNode * myExp;
+	DeclListNode * myDeclList;
+	StmtListNode * myStmtList;
+};
+
+class IfElseStmtNode : public StmtNode {
+public:
+	IfElseStmtNode(ExpNode * expNode, DeclListNode* declList1,
+		StmtListNode * stmtList1, DeclListNode* declList2,
+			StmtListNode * stmtList2) : StmtNode() {
+			myExp = expNode;
+			myDeclList1 = declList1;
+			myStmtList1 = stmtList1;
+			myDeclList2 = declList2;
+			myStmtList2 = stmtList2;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpNode * myExp;
+	DeclListNode * myDeclList1;
+	StmtListNode * myStmtList1;
+	DeclListNode * myDeclList2;
+	StmtListNode * myStmtList2;
+};
+
+class WhileStmtNode : public StmtNode {
+public:
+	WhileStmtNode(ExpNode * expNode, DeclListNode* declList,
+		StmtListNode * stmtList) : StmtNode() {
+			myExp = expNode;
+			myDeclList = declList;
+			myStmtList = stmtList;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpNode * myExp;
+	DeclListNode * myDeclList;
+	StmtListNode * myStmtList;
+};
+
+class ReturnStmtNode : public StmtNode {
+public:
+	ReturnStmtNode(ExpNode * expNode) : StmtNode() {
+		myExp = expNode;
+	}
+	void unparse(std::ostream& out, int indent);
+private:
+	ExpNode * myExp;
+};
+
+class BinaryExpNode : public ExpNode {
+public:
+	BinaryExpNode(ExpNode * expNode1, ExpNode * expNode2) : ExpNode() {
+		myExp1 = expNode1;
+		myExp2 = expNode2;
+	}
+	virtual void unparse(std::ostream& out, int indent) = 0;
+protected:
+	ExpNode * myExp1;
+	ExpNode * myExp2;
+};
+
+class PlusNode : public BinaryExpNode {
+public:
+	PlusNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
 	}
 	void unparse(std::ostream& out, int indent);
 };
