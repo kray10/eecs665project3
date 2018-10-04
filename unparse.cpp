@@ -111,6 +111,9 @@ void ExpListNode::unparse(std::ostream& out, int indent) {
 	for (std::list<ExpNode *>::iterator it=myExpList.begin();
 		it != myExpList.end(); ++it){
 	    ExpNode * elt = *it;
+			if (it != myExpList.begin()) {
+				out << ", ";
+			}
 	    elt->unparse(out, indent);
 	}
 }
@@ -135,6 +138,17 @@ void TrueNode::unparse(std::ostream& out, int indent) {
 
 void FalseNode::unparse(std::ostream& out, int indent) {
 	out << "false";
+}
+void CallExpNode::unparse(std::ostream& out, int indent) {
+	myId->unparse(out,0);
+	out << " (";
+	myExpList->unparse(out,0);
+	out << ")";
+}
+void CallStmtNode::unparse(std::ostream& out, int indent) {
+	doIndent(out, indent);
+	myCallExpNode->unparse(out, 0);
+	out << ";\n";
 }
 
 void PostIncStmtNode::unparse(std::ostream& out, int indent) {

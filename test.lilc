@@ -1,7 +1,7 @@
 int func (bool r, void t) {int a; a = 12345; r.y.tty = "32234454235";t= true;y++;input >> sdagds; output << wetwe;
 if (r){int y; y++;}
 if (p){bool j; j = true;}else{bool j; j = false;while(p){int r; p = "sdadg";}}
-return j; return; x = 6+8+9;
+return j; return; x = 6+8+9; d (); d (a, b, c);
 }
 
 int y;
