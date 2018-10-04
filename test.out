@@ -1,0 +1,7 @@
+int func(void t, bool r) {
+ int a;
+ a = 12345;
+ r.y = "32234454235";
+ t = true;
+}
+int y;
