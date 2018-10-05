@@ -232,4 +232,28 @@ void PlusNode::unparse(std::ostream& out, int indent) {
 	out << ")";
 }
 
+void MinusNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " - ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void TimesNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " * ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void DivideNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " / ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
 } // End namespace LIL' C

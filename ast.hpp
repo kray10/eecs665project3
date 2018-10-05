@@ -497,6 +497,27 @@ public:
 	void unparse(std::ostream& out, int indent);
 };
 
+class MinusNode : public BinaryExpNode {
+public:
+	MinusNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class TimesNode : public BinaryExpNode {
+public:
+	TimesNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class DivideNode : public BinaryExpNode {
+public:
+	DivideNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
 class CallExpNode : public ExpNode{
 public:
 	CallExpNode(IdNode * id, ExpListNode * expListNode) : ExpNode(){

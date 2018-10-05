@@ -291,6 +291,39 @@ assignExp : loc ASSIGN exp {
 exp : exp PLUS exp {
     $$ = new PlusNode($1, $3);
     }
+  | exp MINUS exp{
+    $$ = new MinusNode($1, $3);
+    }
+  | exp TIMES exp{
+    $$ = new TimesNode($1, $3);
+    }
+  | exp DIVIDE exp{
+    $$ = new DivideNode($1, $3);
+    }
+  /* | exp AND exp{
+    $$ = new ANDNode($1, $3);
+    }
+  | exp OR exp{
+    $$ = new ORNode($1, $3);
+    }
+  | exp EQUALS exp{
+    $$ = new EqualsNode($1, $3);
+    }
+  | exp NOTEQUALS exp{
+    $$ = new NotEqualsNode($1, $3);
+    }
+  | exp LESS exp{
+    $$ = new LessNode($1, $3);
+    }
+  | exp GREATER exp{
+    $$ = new GreaterNode($1, $3);
+    }
+  | exp LESSEQ exp{
+    $$ = new LessEqNode($1, $3);
+    }
+  | exp GREATEREQ exp{
+      $$ = new GreaterEqNode($1, $3);
+    } */
   | term {
     $$ = $1;
     }
