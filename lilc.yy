@@ -300,7 +300,7 @@ exp : exp PLUS exp {
   | exp DIVIDE exp{
     $$ = new DivideNode($1, $3);
     }
-  /* | exp AND exp{
+  | exp AND exp{
     $$ = new ANDNode($1, $3);
     }
   | exp OR exp{
@@ -323,7 +323,7 @@ exp : exp PLUS exp {
     }
   | exp GREATEREQ exp{
       $$ = new GreaterEqNode($1, $3);
-    } */
+    }
   | term {
     $$ = $1;
     }

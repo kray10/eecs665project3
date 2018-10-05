@@ -518,6 +518,62 @@ public:
 	void unparse(std::ostream& out, int indent);
 };
 
+class AndNode : public BinaryExpNode {
+public:
+	AndNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class OrNode : public BinaryExpNode {
+public:
+	OrNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class EqualsNode : public BinaryExpNode {
+public:
+	EqualsNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class NotEqualsNode : public BinaryExpNode {
+public:
+	NotEqualsNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class LessNode : public BinaryExpNode {
+public:
+	LessNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class GreaterNode : public BinaryExpNode {
+public:
+	GreaterNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class LessEqNode : public BinaryExpNode {
+public:
+	LessEqNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class GreaterEqNode : public BinaryExpNode {
+public:
+	GreaterEqNode(ExpNode * expNode1, ExpNode * expNode2) : BinaryExpNode(expNode1, expNode2) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
 class CallExpNode : public ExpNode{
 public:
 	CallExpNode(IdNode * id, ExpListNode * expListNode) : ExpNode(){

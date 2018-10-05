@@ -256,4 +256,68 @@ void DivideNode::unparse(std::ostream& out, int indent) {
 	out << ")";
 }
 
+void AndNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " && ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void OrNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " || ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void EqualsNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " == ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void NotEqualsNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " != ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void LessNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " < ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void GreaterNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " > ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void LessEqNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " <= ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
+void GreaterEqNode::unparse(std::ostream& out, int indent) {
+	out << "(";
+	myExp1->unparse(out, 0);
+	out << " >= ";
+	myExp2->unparse(out, 0);
+	out << ")";
+}
+
 } // End namespace LIL' C
