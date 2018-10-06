@@ -320,4 +320,16 @@ void GreaterEqNode::unparse(std::ostream& out, int indent) {
 	out << ")";
 }
 
+void NotNode::unparse(std::ostream& out, int indent) {
+	out << "(!";
+	myExp->unparse(out, 0);
+	out << ")";
+}
+
+void UnaryMinusNode::unparse(std::ostream& out, int indent) {
+	out << "(-";
+	myExp->unparse(out, 0);
+	out << ")";
+}
+
 } // End namespace LIL' C

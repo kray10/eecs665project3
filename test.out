@@ -28,3 +28,23 @@ int func(void t, bool r) {
  d (a, b, c);
 }
 int y;
+void r() {
+ int y;
+ y = ((6 + (((-7) / 5) * f)) - 7);
+ if (((av == uy) && (ij != (!mu)))) {
+  y = "hjjhgffl";
+ }
+ while ((((wet <= dfg) || ((sdfg >= safa) && (fasf < gsgsg))) || (sdf > 8))) {
+  int j;
+  sdgs = (67 >= 2345);
+  if ((!(r || (t && y)))) {
+   int y;
+  }
+ }
+}
+struct a b;
+struct sdfa {
+ int y;
+ bool j;
+ void t;
+};

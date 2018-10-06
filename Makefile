@@ -5,7 +5,7 @@ EXE = P3
 CSTD = -std=c99
 CXXSTD = -std=c++14
 
-CFLAGS = -O0 -g $(CSTD) 
+CFLAGS = -O0 -g $(CSTD)
 CXXFLAGS = -O0 -g $(CXXSTD)
 
 P3: lilc_parser.o lilc_lexer.o lilc_compiler.o P3.o unparse.o
@@ -36,4 +36,3 @@ unparse.o: unparse.cpp
 .PHONY: clean
 clean:
 	rm -rf *.output *.o *.cc *.hh P[1-6]
-

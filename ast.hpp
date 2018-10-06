@@ -596,6 +596,30 @@ private:
 	CallExpNode * myCallExpNode;
 };
 
+class UnaryExpNode : public ExpNode {
+public:
+	UnaryExpNode(ExpNode * expNode) : ExpNode() {
+		myExp = expNode;
+	}
+	virtual void unparse(std::ostream& out, int indent) = 0;
+protected:
+	ExpNode * myExp;
+};
+
+class NotNode : public UnaryExpNode {
+public:
+	NotNode(ExpNode * expNode) : UnaryExpNode(expNode) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
+class UnaryMinusNode : public UnaryExpNode {
+public:
+	UnaryMinusNode(ExpNode * expNode) : UnaryExpNode(expNode) {
+	}
+	void unparse(std::ostream& out, int indent);
+};
+
 } //End namespace LIL' C
 
 #endif

@@ -158,9 +158,9 @@
 %left             OR
 %left             AND
 %nonassoc         EQUALS NOTEQUALS GREATER GREATEREQ LESS LESSEQ
-%left             PLUS
-%left             DIVIDE TIMES
-%precedence       MINUS NOT
+%left             MINUS PLUS
+%left             TIMES DIVIDE
+%right            NOT
 %%
 
 program : declList {
@@ -288,45 +288,55 @@ stmt : assignExp SEMICOLON {
 assignExp : loc ASSIGN exp {
     $$ = new AssignNode($1, $3);
     }
-exp : exp PLUS exp {
+exp  : assignExp {
+    $$ = $1;
+    }
+  | exp PLUS exp {
     $$ = new PlusNode($1, $3);
     }
-  | exp MINUS exp{
+  | exp MINUS exp {
     $$ = new MinusNode($1, $3);
     }
-  | exp TIMES exp{
+  | exp TIMES exp {
     $$ = new TimesNode($1, $3);
     }
-  | exp DIVIDE exp{
+  | exp DIVIDE exp {
     $$ = new DivideNode($1, $3);
     }
-  | exp AND exp{
-    $$ = new ANDNode($1, $3);
+  | NOT exp {
+    $$ = new NotNode($2);
     }
-  | exp OR exp{
-    $$ = new ORNode($1, $3);
+  | exp AND exp {
+    $$ = new AndNode($1, $3);
     }
-  | exp EQUALS exp{
+  | exp OR exp {
+    $$ = new OrNode($1, $3);
+    }
+  | exp EQUALS exp {
     $$ = new EqualsNode($1, $3);
     }
-  | exp NOTEQUALS exp{
+  | exp NOTEQUALS exp {
     $$ = new NotEqualsNode($1, $3);
     }
-  | exp LESS exp{
+  | exp LESS exp {
     $$ = new LessNode($1, $3);
     }
-  | exp GREATER exp{
+  | exp GREATER exp {
     $$ = new GreaterNode($1, $3);
     }
-  | exp LESSEQ exp{
+  | exp LESSEQ exp {
     $$ = new LessEqNode($1, $3);
     }
-  | exp GREATEREQ exp{
-      $$ = new GreaterEqNode($1, $3);
+  | exp GREATEREQ exp {
+    $$ = new GreaterEqNode($1, $3);
+    }
+  | MINUS term {
+    $$ = new UnaryMinusNode($2);
     }
   | term {
     $$ = $1;
     }
+  ;
 term : loc {
     $$ = $1;
     }
@@ -341,6 +351,12 @@ term : loc {
     }
   | FALSE {
     $$ = new FalseNode();
+    }
+  | LPAREN exp RPAREN {
+    $$ = $2;
+    }
+  | fncall {
+    $$ = $1;
     }
   ;
 fncall : id LPAREN RPAREN {
@@ -358,8 +374,9 @@ actualList : exp{
     $$ = $1;
     }
 type : INT { $$ = new IntNode();}
-type : BOOL { $$ = new BoolNode();}
-type : VOID {$$ = new VoidNode();}
+  | BOOL { $$ = new BoolNode();}
+  | VOID {$$ = new VoidNode();}
+  ;
 loc : id {
     $$ = $1;
     }
