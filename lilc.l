@@ -2,7 +2,7 @@
 #include <string>
 #include <limits.h>
 
-/* Provide custom yyFlexScanner subclass and specify the interface */ 
+/* Provide custom yyFlexScanner subclass and specify the interface */
 #include "lilc_scanner.hpp"
 #undef  YY_DECL
 #define YY_DECL int LILC::LilC_Scanner::yylex( LILC::LilC_Parser::semantic_type * const lval )
@@ -11,15 +11,15 @@
 using TokenTag = LILC::LilC_Parser::token;
 
 namespace LILC{
-	IDToken::IDToken(size_t ll, size_t cc, std::string value) 
+	IDToken::IDToken(size_t ll, size_t cc, std::string value)
 	: SynSymbol(ll,cc,TokenTag::ID){
 		this->_value = value;
 	}
-	IntLitToken::IntLitToken(size_t ll, size_t cc, int value) 
+	IntLitToken::IntLitToken(size_t ll, size_t cc, int value)
 	: SynSymbol(ll,cc,TokenTag::INTLITERAL){
 		this->_value = value;
 	}
-	StringLitToken::StringLitToken(size_t ll, size_t cc, std::string value) 
+	StringLitToken::StringLitToken(size_t ll, size_t cc, std::string value)
 	: SynSymbol(ll,cc,TokenTag::STRINGLITERAL)
 	{
 		this->_value = value;
@@ -62,14 +62,14 @@ int		{ return produceNullaryToken(TokenTag::INT); }
 true		{ return produceNullaryToken(TokenTag::TRUE); }
 false		{ return produceNullaryToken(TokenTag::FALSE); }
 struct		{ return produceNullaryToken(TokenTag::STRUCT); }
-input		{ return produceNullaryToken(TokenTag::INPUT); }
-output		{ return produceNullaryToken(TokenTag::OUTPUT); }
+cin		{ return produceNullaryToken(TokenTag::INPUT); }
+cout		{ return produceNullaryToken(TokenTag::OUTPUT); }
 if		{ return produceNullaryToken(TokenTag::IF); }
 else		{ return produceNullaryToken(TokenTag::ELSE); }
 while		{ return produceNullaryToken(TokenTag::WHILE); }
 return		{ return produceNullaryToken(TokenTag::RETURN); }
 
-({LETTER}|_)({LETTER}|DIGIT|_)*		{
+({LETTER}|_)({LETTER}|{DIGIT}|_)*		{
                yylval->symbolValue = new IDToken(lineNum, charNum, yytext);
 		charNum += yyleng;
                return TokenTag::ID;

@@ -98,13 +98,13 @@ void StmtListNode::unparse(std::ostream& out, int indent) {
 void AssignStmtNode::unparse(std::ostream& out, int indent) {
 	doIndent(out, indent);
 	myAssignNode->unparse(out, 0);
+	out << ";\n";
 }
 
 void AssignNode::unparse(std::ostream& out, int indent) {
 	myExpNode1->unparse(out, indent);
 	out << " = ";
 	myExpNode2->unparse(out, indent);
-	out << ";\n";
 }
 
 void ExpListNode::unparse(std::ostream& out, int indent) {
@@ -165,14 +165,14 @@ void PostDecStmtNode::unparse(std::ostream& out, int indent) {
 
 void ReadStmtNode::unparse(std::ostream& out, int indent) {
 	doIndent(out, indent);
-	out << "input >> ";
+	out << "cin >> ";
 	myExp->unparse(out, 0);
 	out << ";\n";
 }
 
 void WriteStmtNode::unparse(std::ostream& out, int indent) {
 	doIndent(out, indent);
-	out << "output >> ";
+	out << "cout << ";
 	myExp->unparse(out, 0);
 	out << ";\n";
 }

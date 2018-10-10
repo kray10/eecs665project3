@@ -1,50 +1,159 @@
-int func(void t, bool r) {
- int a;
- a = 12345;
- r.y.tty = "32234454235";
- t = true;
- y++;
- input >> sdagds;
- output >> wetwe;
- if (r) {
-  int y;
-  y++;
- }
- if (p) {
-  bool j;
-  j = true;
- } else {
-  bool j;
-  j = false;
-  while (p) {
-   int r;
-   p = "sdadg";
-  }
- }
- return j;
- return;
- x = ((6 + 8) + 9);
- d ();
- d (a, b, c);
+int _df;
+bool x1;
+void x;
+struct x y;
+int x() {
 }
-int y;
-void r() {
- int y;
- y = ((6 + (((-7) / 5) * f)) - 7);
- if (((av == uy) && (ij != (!mu)))) {
-  y = "hjjhgffl";
- }
- while ((((wet <= dfg) || ((sdfg >= safa) && (fasf < gsgsg))) || (sdf > 8))) {
-  int j;
-  sdgs = (67 >= 2345);
-  if ((!(r || (t && y)))) {
-   int y;
-  }
- }
+bool x(int a, bool b, void c) {
 }
-struct a b;
-struct sdfa {
+void test(int a) {
+ int x;
+}
+void test(int a) {
+ x = 1;
+}
+void test(int a) {
+ int x;
+ x = 1;
+}
+void test(int a) {
+ int x;
+ bool y;
+ y = (x + 5);
+ x = 1;
+}
+struct x {
  int y;
- bool j;
- void t;
 };
+struct x {
+ struct x y;
+ bool z;
+};
+void testFunc() {
+ x = 1;
+ x.r = y.t;
+ r.t.y.u.i.o.p = 4;
+ x++;
+ c.t++;
+ r.t.y++;
+ x--;
+ c.t--;
+ r.t.y--;
+ cin >> r;
+ cin >> t.r;
+ cin >> a.s.d.f.g.h.j.k;
+ cout << r;
+ cout << r.t;
+ cout << a.s.d.f.g.h.j.k.l;
+ if (a) {
+ }
+ if (a) {
+  int x;
+ }
+ if (a) {
+  x = 1;
+ }
+ if (a) {
+  int x;
+  y = 4;
+ }
+ if (a) {
+  if (b) {
+   if (c) {
+    y = 7;
+   }
+  }
+ }
+ if (a) {
+ } else {
+ }
+ if (a) {
+  int x;
+ } else {
+  int x;
+ }
+ if (a) {
+  x = 1;
+ } else {
+  x = 1;
+ }
+ if (a) {
+  int x;
+  y = 4;
+ } else {
+  int x;
+  y = 4;
+ }
+ if (a) {
+  if (b) {
+   if (c) {
+    y = 7;
+   } else {
+    y = r;
+   }
+  } else {
+   s = r;
+  }
+ } else {
+  t = y;
+ }
+ while (a) {
+ }
+ while (a) {
+  int x;
+ }
+ while (a) {
+  x = y;
+ }
+ while (a) {
+  int x;
+  x = y;
+ }
+ while (a) {
+  while (b) {
+   while (c) {
+    a = (b + c);
+   }
+  }
+ }
+ return a;
+ return (a + b);
+ return true;
+ return false;
+ return (d > k);
+ return;
+ t ();
+ t (a);
+ t (a, b, c, d, e, f, g);
+ y = ((((1 + 2) - ((3 * 4) / (!5))) && 6) || (-7));
+ y = (1 == (2 < (3 > (4 <= (5 >= (6 != 7))))));
+ y = ((((1 + 2) - ((3 * 4) / (!5))) && 6) || (7 == (2 < (3 > (4 <= (5 >= (6 != 7)))))));
+ y = (1 + ((3 != 6) / 7));
+ x = b = c = d = 6;
+ r.y.t.r = e.r.t.y = h.f.sd.s = da_s1df.as1d_fas1df.as1d_f1a = true;
+ if (((a == b) || ((c != d) && (e < f)))) {
+  while (a) {
+   if (b) {
+    while (c) {
+     if (c) {
+      while (d) {
+       int x;
+       x = 1;
+       r (a, b, c, d);
+      }
+     }
+    }
+   } else {
+    while (d) {
+     if (r) {
+      while (h) {
+       int y;
+       y = (5 + 4);
+       f (f, g, h, j, k);
+      }
+     }
+    }
+   }
+  }
+ }
+}

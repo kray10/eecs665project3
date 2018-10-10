@@ -157,9 +157,9 @@
 %right            ASSIGN
 %left             OR
 %left             AND
-%nonassoc         EQUALS NOTEQUALS GREATER GREATEREQ LESS LESSEQ
+%nonassoc         LESSEQ LESS GREATEREQ GREATER NOTEQUALS EQUALS
 %left             MINUS PLUS
-%left             TIMES DIVIDE
+%left             DIVIDE TIMES
 %right            NOT
 %%
 
@@ -229,10 +229,10 @@ formals : LPAREN RPAREN {
   ;
 formalsList : formalDecl {
     $$ = new std::list<FormalDeclNode *>();
-    $$->push_back($1);
+    $$->push_front($1);
     }
   | formalDecl COMMA formalsList {
-    $3->push_back($1);
+    $3->push_front($1);
     $$ = $3;
     }
   ;
